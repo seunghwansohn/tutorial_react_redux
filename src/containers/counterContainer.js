@@ -1,20 +1,29 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {increase} from '../modules/counterModule';
-import CounterComponent from '../components/counterComponent';
+import {increase, decrease} from '../modules/counterModule';
+import CounterPlusComponent from '../components/counterPlusComponent';
+import CounterMinusComponent from '../components/counterMinusComponent';
+
+
 
 const deliverFunction = () => {
     console.log('이렇게 해야 콤포넌트로 함수가 전달됩니다.');
   }
 
   
-function CounterContainer({increaseFromComponent, number}) {    //위의 deliverFunction은 전달할 필요가 없지만,
-                                        //액션 생성함수인 incrase는 전달을 해줘야 액션 실행 함수와 연결됨.
-                                        //실험으로 increase전달 부분을 삭제하면 액션 실행함수가 실행 안됨을 알 수 있음.
-                                        //하위 컴포넌트에 인자로 보내는 이유는 이렇듯 하위에서 상위방향으로 연동시키기 위한것
+function CounterContainer({increaseFromComponent, number, decreaseFromComponent}) {  
     return (
       <div className="App">
-        <CounterComponent onDeliverFunction = {deliverFunction} onIncrease = {increaseFromComponent} number = {number}></CounterComponent>
+        <CounterPlusComponent onDeliverFunction = {deliverFunction} onIncrease = {increaseFromComponent} number = {number}> </CounterPlusComponent>
+        <br></br>
+        <hr></hr>
+        <br></br>
+
+        <CounterMinusComponent 
+        onDeliverFunction = {deliverFunction} 
+        onDecrease = {decreaseFromComponent} 
+        number = {number}>
+        </CounterMinusComponent>
       </div>
     );
   }
@@ -24,8 +33,13 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    increaseFromComponent: () => {
-        dispatch(increase());
+    increaseFromComponent: () => {      
+    // :의 앞부분은 콤포넌트 이벤트에 의해 발생될 최초 발생될 함수, 
+    dispatch(increase());           
+    // :의 뒷부분은 최초 발생될 함수에 의해 모듈에서 불러와져서 dispatch될 최종값
+    },
+    decreaseFromComponent : () => {
+      dispatch(decrease())
     }
 })
 export default connect (
