@@ -33,7 +33,7 @@ function CounterContainer({increaseFromComponent, number, decreaseFromComponent}
   }
 
 const mapStateToProps = state => ({
-    number: state.number,
+    number: state.counterModule.number,
 })
 
 const mapDispatchToProps = dispatch => ({
