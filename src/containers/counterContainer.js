@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {increase, decrease} from '../modules/counterModule';
+import {createAct_Increase, createAct_Decrease} from '../modules/counterModule';
 import CounterPlusComponent from '../components/counterPlusComponent';
 import CounterMinusComponent from '../components/counterMinusComponent';
+import TodoComponent from '../components/todoComponent';
 
 
 
@@ -24,6 +25,9 @@ function CounterContainer({increaseFromComponent, number, decreaseFromComponent}
         onDecrease = {decreaseFromComponent} 
         number = {number}>
         </CounterMinusComponent>
+        <br></br>
+        <hr></hr>
+        <TodoComponent></TodoComponent>
       </div>
     );
   }
@@ -35,11 +39,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     increaseFromComponent: () => {      
     // :의 앞부분은 콤포넌트 이벤트에 의해 발생될 최초 발생될 함수, 
-    dispatch(increase());           
+    dispatch(createAct_Increase());           
     // :의 뒷부분은 최초 발생될 함수에 의해 모듈에서 불러와져서 dispatch될 최종값
     },
     decreaseFromComponent : () => {
-      dispatch(decrease())
+      dispatch(createAct_Decrease())
     }
 })
 export default connect (
