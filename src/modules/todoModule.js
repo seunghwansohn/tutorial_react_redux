@@ -3,7 +3,7 @@ const INSERT = 'todos/INSERT'
 const TOGGLE = 'todos/TOGGLE'
 const REMOVE = 'todos/REMOVE'
 
-export const createAct_changeInput = input => ({
+export const changeInput = input => ({
     type: CHANGE_INPUT,
     input
 })
@@ -45,7 +45,7 @@ const initialState = {
     ]
 }
 
-function todoModule (state = initialState, action){
+function todos (state = initialState, action){
     switch (action.type){
         case CHANGE_INPUT :
             return {
@@ -55,18 +55,18 @@ function todoModule (state = initialState, action){
         case INSERT :
             return {
                 ...state,
-                todos : state.todos.concat(action.todo)
+                todos : state.todoModule.concat(action.todo)
             }
         case TOGGLE : 
             return {
                 ...state,
-                todos: state.todos.map(todo =>
+                todos: state.todoModule.map(todo =>
                     todo.id === action.id ? {...todo, done: !todo.done}: todo)
             }
         case REMOVE:
             return {
                 ...state,
-                todos : state.todos.filter(todo => todo.id !== action.id)
+                todos : state.todoModule.filter(todo => todo.id !== action.id)
             }
         default :
         return state;    
@@ -74,4 +74,4 @@ function todoModule (state = initialState, action){
     }
 }
 
-export default todoModule;
+export default todos;

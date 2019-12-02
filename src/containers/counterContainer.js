@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {createAct_Increase, createAct_Decrease} from '../modules/counterModule';
 import CounterPlusComponent from '../components/counterPlusComponent';
 import CounterMinusComponent from '../components/counterMinusComponent';
-import TodoComponent from '../components/todoComponent';
 
 
 
@@ -25,9 +24,7 @@ function CounterContainer({increaseFromComponent, number, decreaseFromComponent}
         onDecrease = {decreaseFromComponent} 
         number = {number}>
         </CounterMinusComponent>
-        <br></br>
         <hr></hr>
-        <TodoComponent></TodoComponent>
       </div>
     );
   }

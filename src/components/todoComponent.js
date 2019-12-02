@@ -14,17 +14,18 @@ const TodoItemComponent = () => {
     )
 }
 
-const TodoComponent = ({onDeliverFunction, onDecrease, number}) => {
+const TodoComponent = ({input, onChangeInput}) => {
     const onSubmitTodoItem = e => {
         e.preventDefault()
     }
+    const onChange = e => onChangeInput(e.target.value)
     return (
         <div>
             
             <h1>할일 리스트앱</h1>
             <br></br>
             <form onSubmit = {onSubmitTodoItem}>
-                <input/>
+                <input value = {input} onChange = {onChange}/>
                 <button type = "submit">등록</button>
             </form>
             <TodoItemComponent></TodoItemComponent>

@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import counterModule from './counterModule'
-import todoModule from './todoModule'
+import todos from './todoModule'
 
 const rootReducer = combineReducers ({
     counterModule,
-    todoModule
+    todos
 })
 
 export default rootReducer
