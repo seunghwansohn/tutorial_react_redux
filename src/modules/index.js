@@ -6,5 +6,4 @@ const rootReducer = combineReducers ({
     counterModule,
     todos
 })
-
 export default rootReducer

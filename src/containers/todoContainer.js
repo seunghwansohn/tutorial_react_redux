@@ -11,7 +11,6 @@ const TodosContainer = ({
     toggle,
     remove,
 }) => {
-    console.log(input)
     return (
         <TodoComponent 
             input = {input}
@@ -24,15 +23,20 @@ const TodosContainer = ({
     )
 }
 
-export default connect(
-    ({todos}) => ({
-        input : todos.input,
-        todos: todos.todos
-    }),
+const mapStateToProps = todos => (
     {
-        changeInput,
-        insert,
-        toggle,
-        remove,
+    input : todos.todos.input,
+    todos : todos.todos,
+})
+const mapDispatchToProps = dispatch => ({
+    changeInput:(input) => {
+        dispatch(changeInput(input))
+    },
+    insert : () => {
+        dispatch(insert())
     }
+})
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
 ) (TodosContainer)
