@@ -1,14 +1,20 @@
+import {createAction, handleActions} from 'redux-actions'
+
+
 const INCREASE = 'counter/INCREASE'
 const DECREASE = 'counter/DECREASE'
-
 //액션 생성함수 생성
 //액션 생성함수는 개별 export로 내보내준 뒤
 //컨테이너에서 {}안에 넣어서 불러옴.
-export const createAct_Increase = (number) => (
-    {
-        type : INCREASE,
-        number
-})
+
+
+// export const createAct_Increase = (number) => (
+//     {
+//         type : INCREASE,
+//         number
+// })
+
+export const createAct_Increase = createAction(INCREASE);
 
 export const createAct_Decrease = (number) => (
     {
@@ -16,6 +22,7 @@ export const createAct_Decrease = (number) => (
         number
     }
 )
+
 
 const initialState = {
     number: 0

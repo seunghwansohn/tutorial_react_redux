@@ -13,8 +13,6 @@ const TodoItemComponent = (todos) => {
         })
 
     }
-    
-    console.log(todos.todos[0].id)
     return (
         <div>
            {todoMap()}
@@ -28,7 +26,6 @@ const TodoComponent = ({input, onChangeInput, todos}) => {
     const onChange = e => {
         onChangeInput(e.target.value)
     }
-    console.log(todos.todos)
     return (
         <div>
             <h1>할일 리스트앱</h1>
